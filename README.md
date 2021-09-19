@@ -21,7 +21,16 @@ docker run --rm -p 80:80 fastapi_demo:with-batch
 
 - `--rm`: Delete this container after stopping running it. This is to avoid having to manually delete the container. Deleting unused containers helps your system to stay clean and tidy.
 - `-p 80:80`: This flags performs an operation knows as port mapping. The container, as well as your local machine, has its own set of ports. So you are able to access the port 80 within the container, you need to map it to a port on your computer. In this case it is mapped to the port 80 in your machine.
-- Now head over to `localhost:80` and you should see a message about the server spinning up correctly.
+
+Other userful options:
+
+- `--mount type=bind,source=dir/in/your/pc,target=dir/in/container`: This flag allows you to mount a directory in your pc to a directory within the container. This is very important because containers usually have short lifetimes and without mounting files onto them there is no way of persisting changes done to these files when the container was running.
+
+- `-e MODEL_NAME=half_plus_two`: Will create the environment variable `MODEL_NAME` and assign to it the value of `half_plus_two`.
+
+- `-t`: Attaches a pseudo-terminal to the container so you can check what is being printed in the standard streams of the container. This will allow you to see the logs printed out by the standard streams of the container.
+
+Now head over to `localhost:80` and you should see a message about the server spinning up correctly.
 
 ### Make requests to the server
 
